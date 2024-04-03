@@ -16,7 +16,7 @@ class Document < ApplicationRecord
 
     EtagMatcher.match_url_etag(URI(url), etag, Proc.new {
       puts "Matched document etag for document #{id}, ignoring"
-    }) do
+    }) do |etag|
       begin
         puts "fetching #{url}"
         response = HTTParty.get(url)
@@ -30,7 +30,7 @@ class Document < ApplicationRecord
           reader = PDF::Reader.new(temp_pdf.path)
           text = reader.pages.map(&:text).join("\n").gsub(/
   {2,}/, "\n").gsub("\u0000", "") # remove null bytes, multiple newlines
-          update!(text:, extract_status: 'success')
+          update!(text: text, etag: etag, extract_status: 'success')
 
           puts "Indexing document #{id}"
           Integrations::Opensearch.new.index_object!(self)

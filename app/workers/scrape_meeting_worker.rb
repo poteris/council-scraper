@@ -16,7 +16,7 @@ class ScrapeMeetingWorker
 
     EtagMatcher.match_url_etag(meeting_uri, meeting.etag, Proc.new {
       puts "Matched meeting etag for meeting #{meeting_id}, ignoring"
-    }) do
+    }) do |etag|
       @base_domain = 'https://' + meeting_uri.host
 
       puts "fetching #{meeting.url}"
@@ -41,6 +41,8 @@ class ScrapeMeetingWorker
         document = meeting.documents.find_or_create_by!(url: media_url)
         document.update!(is_media: true)
       end
+
+      meeting.update!(etag: etag)
     end
   end
 
