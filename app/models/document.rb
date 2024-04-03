@@ -14,26 +14,30 @@ class Document < ApplicationRecord
     return unless pdf?
     return if text.present?
 
-    begin
-      puts "fetching #{url}"
-      response = HTTParty.get(url)
+    EtagMatcher.match_url_etag(URI(url), etag, Proc.new {
+      puts "Matched document etag for document #{id}, ignoring"
+    }) do
+      begin
+        puts "fetching #{url}"
+        response = HTTParty.get(url)
 
-      Tempfile.create(['downloaded', '.pdf']) do |temp_pdf|
-        temp_pdf.binmode
-        temp_pdf.write(response.body)
-        temp_pdf.rewind
+        Tempfile.create(['downloaded', '.pdf']) do |temp_pdf|
+          temp_pdf.binmode
+          temp_pdf.write(response.body)
+          temp_pdf.rewind
 
-        # Extract text from the PDF
-        reader = PDF::Reader.new(temp_pdf.path)
-        text = reader.pages.map(&:text).join("\n").gsub(/
-{2,}/, "\n").gsub("\u0000", "") # remove null bytes, multiple newlines
-        update!(text:, extract_status: 'success')
+          # Extract text from the PDF
+          reader = PDF::Reader.new(temp_pdf.path)
+          text = reader.pages.map(&:text).join("\n").gsub(/
+  {2,}/, "\n").gsub("\u0000", "") # remove null bytes, multiple newlines
+          update!(text:, extract_status: 'success')
 
-        puts "Indexing document #{id}"
-        Integrations::Opensearch.new.index_object!(self)
+          puts "Indexing document #{id}"
+          Integrations::Opensearch.new.index_object!(self)
+        end
+      rescue PDF::Reader::MalformedPDFError, HTTParty::RedirectionTooDeep => e
+        update!(extract_status: 'failed')
       end
-    rescue PDF::Reader::MalformedPDFError, HTTParty::RedirectionTooDeep => e
-      update!(extract_status: 'failed')
     end
   end
 

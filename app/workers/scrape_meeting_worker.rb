@@ -7,28 +7,40 @@ class ScrapeMeetingWorker
     sleep CouncilScraper::GLOBAL_DELAY
     meeting = Meeting.find(meeting_id)
 
-    @base_domain = 'https://' + URI(meeting.url).host
-    puts "fetching #{meeting.url}"
-    meeting_doc = get_doc(meeting.url)
+    meeting_uri = URI(meeting.url)
 
-    pdfs = get_printed_minutes(meeting_doc)
-    pdfs.each do |pdf|
-      document = meeting.documents.find_or_create_by!(url: pdf)
-      document.update!(is_minutes: true)
-      document.extract_text!
+    if meeting_uri.blank?
+      puts "couldn't parse meeting URI for meeting #{meeting_id}, ignoring"
+      return
     end
 
-    pdfs = recursive_get_pdfs(meeting_doc)
-    pdfs.each do |pdf|
-      document = meeting.documents.find_or_create_by!(url: pdf)
-      document.update!(is_minutes: false)
-      document.extract_text!
-    end
+    EtagMatcher.match_url_etag(meeting_uri, meeting.etag, Proc.new {
+      puts "Matched meeting etag for meeting #{meeting_id}, ignoring"
+    }) do
+      @base_domain = 'https://' + meeting_uri.host
 
-    media = get_media(meeting_doc)
-    media.each do |media_url|
-      document = meeting.documents.find_or_create_by!(url: media_url)
-      document.update!(is_media: true)
+      puts "fetching #{meeting.url}"
+      meeting_doc = get_doc(meeting.url)
+
+      pdfs = get_printed_minutes(meeting_doc)
+      pdfs.each do |pdf|
+        document = meeting.documents.find_or_create_by!(url: pdf)
+        document.update!(is_minutes: true)
+        document.extract_text!
+      end
+
+      pdfs = recursive_get_pdfs(meeting_doc)
+      pdfs.each do |pdf|
+        document = meeting.documents.find_or_create_by!(url: pdf)
+        document.update!(is_minutes: false)
+        document.extract_text!
+      end
+
+      media = get_media(meeting_doc)
+      media.each do |media_url|
+        document = meeting.documents.find_or_create_by!(url: media_url)
+        document.update!(is_media: true)
+      end
     end
   end
 
