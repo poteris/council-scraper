@@ -8,7 +8,8 @@ class EtagMatcher
     def match_url_etag(url, existing_etag, if_matched = nil)
       catch :etag_match do
         etag = nil
-        Net::HTTP.start(url.host) do |http|
+        Net::HTTP.start(url.host, url.port,
+                        use_ssl: url.scheme == 'https') do |http|
           etag = http.head(url.path)['Etag']
           if etag.present? && existing_etag === etag
             throw :etag_match
