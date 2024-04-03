@@ -47,7 +47,7 @@ const logger = winston.createLogger({
 const devSettings = {
   headless: false,
   dumpio: true,
-  executablePath: '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome',
+  executablePath: process.env.CHROMIUM_PATH ?? process.platform === 'darwin' ? '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome' : 'chromium',
   args: [ // Various settings required to run on Heroku
     '--disable-gesture-requirement-for-media-playback',
     '--no-sandbox',
@@ -110,7 +110,7 @@ async function main({ port }) {
   logger.info('Registered callback(s).');
 
   const csvPath = 'source_data/opencouncildata_councils.csv'
-  const outputPath = 'data/council_urls.csv'
+  const outputPath = '../data/council_urls.csv'
 
   const csvWriter = createCsvWriter({
       path: outputPath,
@@ -217,9 +217,9 @@ ${indent(error.stack)}
 }
 
 function indent(str, n) {
-  return (str || '').split('
-').map(line => `  ${line}`).join('
-');
+  return (str || '').split(`
+  `).map(line => `  ${line}`).join(`
+  `);
 }
 
 [

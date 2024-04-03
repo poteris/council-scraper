@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": "18.15.x"
+    "node": "^18.15.x"
   },
   "dependencies": {
     "browserify-middleware": "^8.1.1",
