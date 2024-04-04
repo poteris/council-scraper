@@ -185,3 +185,8 @@
   text-align: left;
   white-space: normal;
 }
+
+th[title] {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
