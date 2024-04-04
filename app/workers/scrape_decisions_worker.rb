@@ -30,7 +30,7 @@ class ScrapeDecisionsWorker
 
     # Extract data
     decision_data[:url] = url
-    doc.css('.mgContent p').each do |paragraph|
+    doc.css('p:has(.mgLabel)').each do |paragraph|
       if paragraph.css('.mgLabel').text.include?('Decision Maker:')
         decision_data[:decision_maker] = paragraph.text.gsub('Decision Maker:', '').strip
       end
@@ -41,11 +41,13 @@ class ScrapeDecisionsWorker
         decision_data[:is_callable_in] = paragraph.text.gsub('Is subject to call in?:', '').strip == 'Yes'
       end
     end
-    decision_data[:outcome] = doc.css('.mgContent .mgPlanItemInForce')&.text
+    decision_data[:outcome] = doc.css('.mgPlanItemInForce')&.text
     decision_data[:purpose] = doc.css('h3.mgSubSubTitleTxt').find { |n| n.text == 'Purpose:' }&.next_element&.text
     decision_data[:content] = doc.css('.WordSection1').text.strip
 
-    date_text = doc.css('.mgContent').text.match(%r{Date of decision: (\d{2}/\d{2}/\d{4})})&.captures&.first
+    date_text = doc.xpath(
+      "//p[.//*[contains(concat(' ',normalize-space(@class),' '),' mgLabel ')][normalize-space(text()) = 'Date of decision:']]/text()"
+    )[0]
     decision_data[:date] = Date.strptime(date_text, '%d/%m/%Y') if date_text
 
     decision.update!(decision_data)
