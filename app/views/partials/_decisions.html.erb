@@ -1,4 +1,4 @@
-
+<% show_council ||= false %>
     <div class="box">
       <div class="mb-5">
         <h5 class="title is-size-4">Decisions</h5>
@@ -15,7 +15,7 @@
                 <table class="table is-striped is-narrow is-fullwidth" style='border-left: 5px solid <%= decision.color %>'>
                   <tr>
                     <th scope="row">Decision maker</th>
-                    <td><%= decision.decision_maker || 'Unknown decision maker' %></td>
+                    <td><%= decision.decision_maker || 'Unknown decision maker' %><% if show_council %>, <%= decision.council.name %><% end %></td>
                   </tr>
                   <tr>
                     <th scope="row">Purpose</th>
@@ -41,7 +41,7 @@
                     </th>
                     <td>
                       <a href="<%= decision_path(decision) %>">
-                        <%= decision.date&.strftime('%B %d, %Y') %>
+                        <%= decision.date&.strftime('%B %d, %Y') || 'Unknown date' %>
                       </a></td>
                   </tr>
                 </table>
