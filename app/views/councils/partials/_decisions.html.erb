@@ -25,10 +25,13 @@
                     <th scope="row">Outcome</th>
                     <td><%= truncate(decision.outcome, length: 200) || 'None specified' %></td>
                   </tr>
+                  <% ai_summary = decision.decision_classifications.last&.output.try(:[], "summary") %>
+                  <% if ai_summary %>
                   <tr>
                     <th scope="row" title='Automatically generated with no human review - this should not be trusted!'>⚠️ Unverified AI summary</th>
-                    <td><%= decision.decision_classifications.last&.output.try(:[], "summary") %></td>
+                    <td><%= ai_summary %></td>
                   </tr>
+                  <% end %>
                   <tr>
                     <th scope="row">
                       Date
