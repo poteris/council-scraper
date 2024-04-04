@@ -11,7 +11,7 @@
             <ul class="list-group">
               <% @results.each do |result| %>
                 <li class="list-group-item">
-                  <%= result['object'].council.name %>: <a href="<%= result['object'].url %>"><%= result['object'].meeting.name %> - <%= result['object'].id %></a><br />
+                  <%= result['object'].council.name %>: <a href="<%= meeting_path(result['object'].meeting) %>"><%= result['object'].meeting.name %> - <%= result['object'].id %></a> <a href="<%= result['object'].url %>">(document)</a><br />
                   <% result['highlight'].each do |key, value| %>
                     <%== value.join('<br />') %><br />
                   <% end %>
