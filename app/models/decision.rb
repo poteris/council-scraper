@@ -8,7 +8,7 @@ class Decision < ApplicationRecord
     Integrations::ClassifyDecisionWorker.perform_async(self.id, model)
   end
 
-  def color 
+  def color
     score = decision_classifications.last&.output.try(:[], 'contentiousness_score').to_i
     if score <= 3
       '#bfb'
