@@ -86,7 +86,7 @@ class ScrapeCouncilWorker
   end
 
   def make_url(url, beginning_of_week)
-    week_number = beginning_of_week.strftime('%W').to_i
+    week_number = beginning_of_week.strftime('%W').to_i - 1
     year = beginning_of_week.strftime('%Y').to_i
 
     url.gsub('mgCalendarMonthView.aspx',
