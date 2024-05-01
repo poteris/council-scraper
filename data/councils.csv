@@ -1,7 +1,10 @@
 id,name,url
+1,Bedfordshire,https://centralbeds.moderngov.co.uk/mgCalendarMonthView.aspx
 2,Cambridgeshire,https://democracy.cambridge.gov.uk/mgCalendarMonthView.aspx
+3,Cornwall,https://democracy.cornwall.gov.uk/mgCalendarMonthView.aspx
 4,Derbyshire,https://democracy.derbyshire.gov.uk/mgCalendarMonthView.aspx
 5,Devon,https://democracy.devon.gov.uk/mgCalendarMonthView.aspx/
+6,Dorset,https://moderngov.dorsetcouncil.gov.uk/mgCalendarMonthView.aspx
 7,East Sussex,https://democracy.eastsussex.gov.uk/mgCalendarMonthView.aspx
 8,Essex,https://democracy.southend.gov.uk/mgCalendarMonthView.aspx
 9,Gloucestershire,https://glostext.gloucestershire.gov.uk/mgCalendarMonthView.aspx
@@ -47,6 +50,7 @@ id,name,url
 65,East Staffordshire,https://moderngov.staffordshire.gov.uk/mgCalendarMonthView.aspx
 412,East Suffolk,https://democracy.westsuffolk.gov.uk/mgCalendarMonthView.aspx
 66,Eastbourne,https://democracy.lewes-eastbourne.gov.uk/mgCalendarMonthView.aspx
+67,Eastleigh,https://meetings.eastleigh.gov.uk/mgCalendarMonthView.aspx
 69,Epsom and Ewell,https://democracy.epsom-ewell.gov.uk/mgCalendarMonthView.aspx
 70,Erewash,https://moderngov.erewash.gov.uk/mgCalendarMonthView.aspx
 71,Fenland,https://www.fenland.gov.uk/localgov/mgCalendarMonthView.aspx
@@ -134,7 +138,6 @@ id,name,url
 181,Chorley,https://democracy.chorley.gov.uk/mgCalendarMonthView.aspx
 182,Colchester,https://tdcdemocracy.tendringdc.gov.uk/mgCalendarMonthView.aspx
 184,Crawley,https://democracy.crawley.gov.uk/mgCalendarMonthView.aspx
-67,Eastleigh,https://meetings.eastleigh.gov.uk/mgCalendarMonthView.aspx
 186,Elmbridge,https://mygov.elmbridge.gov.uk/mgCalendarMonthView.aspx
 187,Epping Forest,https://rds.eppingforestdc.gov.uk/mgCalendarMonthView.aspx
 188,Exeter,https://committees.exeter.gov.uk/mgCalendarMonthView.aspx
@@ -183,10 +186,14 @@ id,name,url
 242,Hillingdon,https://modgov.hillingdon.gov.uk/mgCalendarMonthView.aspx
 243,Hounslow,https://democraticservices.hounslow.gov.uk/%28S%28czobl0450xbqi155ede3ifez%29%29/mgCalendarMonthView.aspx
 244,Islington,https://democracy.islington.gov.uk/mgCalendarMonthView.aspx
+245,Kensington and Chelsea,https://www.rbkc.gov.uk/Committees/mgCalendarMonthView.aspx
 246,Kingston upon Thames,https://moderngov.kingston.gov.uk/mgCalendarMonthView.aspx
 247,Lambeth,https://moderngov.lambeth.gov.uk/mgCalendarMonthView.aspx
 248,Lewisham,https://councilmeetings.lewisham.gov.uk/mgCalendarMonthView.aspx
 249,Merton,https://democracy.merton.gov.uk/mgCalendarMonthView.aspx
+250,Newham,https://mgov.newham.gov.uk/mgCalendarMonthView.aspx
+251,Redbridge,https://moderngov.redbridge.gov.uk/mgCalendarMonthView.aspx
+252,Richmond upon Thames,https://cabnet.richmond.gov.uk/mgCalendarMonthView.aspx
 253,Southwark,https://moderngov.southwark.gov.uk/mgCalendarMonthView.aspx
 254,Sutton,https://moderngov.sutton.gov.uk/mgCalendarMonthView.aspx
 255,Tower Hamlets,https://democracy.towerhamlets.gov.uk/mgCalendarMonthView.aspx
@@ -278,6 +285,7 @@ id,name,url
 372,Peterborough,https://democracy.peterborough.gov.uk/mgCalendarMonthView.aspx
 373,Plymouth,https://democracy.plymouth.gov.uk/mgCalendarMonthView.aspx
 374,Portsmouth,https://democracy.portsmouth.gov.uk/mgCalendarMonthView.aspx
+375,Reading,https://democracy.reading.gov.uk/mgCalendarMonthView.aspx
 377,Southampton,https://www.southampton.gov.uk/modernGov/mgCalendarMonthView.aspx
 378,Southend-on-Sea,https://democracy.southend.gov.uk/mgCalendarMonthView.aspx
 380,Thurrock,https://democracy.thurrock.gov.uk/mgCalendarMonthView.aspx
