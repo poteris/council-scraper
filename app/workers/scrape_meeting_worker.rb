@@ -22,7 +22,7 @@ class ScrapeMeetingWorker
       puts "fetching #{meeting.url}"
       meeting_doc = get_doc(meeting.url)
 
-      pdfs = get_printed_minutes(meeting_doc)
+      pdfs = get_printed_minutes(meeting_doc, meeting.date, meeting.council.council_type)
       pdfs.each do |pdf|
         document = meeting.documents.find_or_create_by!(url: pdf)
         document.update!(is_minutes: true)
@@ -46,23 +46,40 @@ class ScrapeMeetingWorker
     end
   end
 
-  def get_printed_minutes(doc)
-    links = doc.css('.mgContent a, .mgActionList a')
-               .select do |link|
-              link.content.downcase.include?('printed minutes') || link.content.downcase.include?('printed draft minutes')
-            end
-      .map { |link| link['href'] }.compact.uniq
+  def get_printed_minutes(doc, meeting_date, council_type)
+    if council_type == Council.cmis
+      minutes = doc.xpath(
+        '//a[@class="TitleLink"][contains(@id, "cmisDocuments")][contains(lower-case(text()),"minutes")|contains(lower-case(text()),"notes")]'
+      )
 
-    puts 'FOUND IT' if links.length > 1
+      dated_minutes_links = minutes.map { |link| [link, Date.parse(link.text)] }
 
-    links.map do |link|
-      clean_link = link.gsub(' ', '+')
-      begin
-        URI.join(base_domain, clean_link).to_s
-      rescue URI::InvalidURIError
-        nil
+      if dated_minutes_links.any { |link_and_date| link_and_date[1] != nil }
+        this_minute = dated_minutes_links.select { |link| link[1] == meeting_date }&.first
+        this_minute = minutes.select { |link| link[1] == nil } unless this_minute
+      else
+        this_minute = dated_minutes_links.first
       end
-    end.compact
+
+      [this_minute]
+    else
+      links = doc.css('.mgContent a, .mgActionList a')
+                 .select do |link|
+        link.content.downcase.include?('printed minutes') || link.content.downcase.include?('printed draft minutes')
+      end
+                 .map { |link| link['href'] }.compact.uniq
+
+      puts 'FOUND IT' if links.length > 1
+
+      links.map do |link|
+        clean_link = link.gsub(' ', '+')
+        begin
+          URI.join(base_domain, clean_link).to_s
+        rescue URI::InvalidURIError
+          nil
+        end
+      end.compact
+    end
   end
 
   def recursive_get_pdfs(doc_or_url, depth = 0)
@@ -75,7 +92,7 @@ class ScrapeMeetingWorker
       doc_or_url = get_doc(doc_or_url)
     end
 
-    links = doc_or_url.css('.mgContent a, .mgLinks a').map { |link| link['href'].to_s }.compact.uniq.map do |link|
+    links = doc_or_url.css('.mgContent a, .mgLinks a, .DocumentListItem a').map { |link| link['href'].to_s }.compact.uniq.map do |link|
       clean_link = link.gsub(' ', '+')
       begin
         URI.join(base_domain, clean_link).to_s

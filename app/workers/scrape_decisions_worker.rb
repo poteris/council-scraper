@@ -6,6 +6,8 @@ class ScrapeDecisionsWorker
   def perform(council_id)
     @council = Council.find(council_id)
 
+    return unless @council.council_type == Council.modern_gov # not supported yet for CMIS
+
     url = make_url
     puts "fetching #{url}"
     doc = get_doc(url)

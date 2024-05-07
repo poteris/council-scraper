@@ -9,31 +9,69 @@ class ScrapeCouncilWorker
     council = Council.find(council_id)
     beginning_of_week = Date.parse(beginning_of_week_str)
 
-    url = make_url(council.base_scrape_url, beginning_of_week)
-    puts "fetching #{url}"
-    base_domain = 'https://' + URI(url).host
-    doc = get_doc(url)
+    case council.council_type
+    when Council.cmis
+      Rails.logger.debug "fetching #{council.base_scrape_url}"
+      agent = Mechanize.new
+      agent.get(council.base_scrape_url)
 
-    puts beginning_of_week
-    7.times do |day|
-      block = doc.css('.mgCalendarWeekGrid')[day]
-      next if block.nil?
+      if (form = agent.forms & [0]) && (button = form.submits.filter { |s| s.value == 'Printer Friendly View' } & [0])
+        form.click_button button
+      end
 
-      links = block.css('a').map { |link| URI.join(base_domain, link['href']).to_s }
+      if agent.css('.rgHeader').filter { |h| h.text == 'Venue' }
+        meeting_link = agent.css('.rgMasterTable a').first['href']
+        calendar_link = meeting_link.gsub(
+          /(tabid\/\d+)\/ctl\/\w+\/(mid\/\d+)\/.*/,
+          "\1/ctl/MeetingCalendarPublicNoJava/\2/Date/#{beginning_of_week.strftime('%Y-%m-%d')}/Default.aspx"
+        )
+        agent.goto(calendar_link)
+      end
 
-      pp links
+      [0..6].map { |n| beginning_of_week + n.days }.each do |this_day|
+        if (date_link = agent.xpath("//table//td[text()=\"#{this_day.strftime('%A, %-d %B')}\"]/following-sibling::td//a"))
+          name = "Unknown committee"
 
-      links.each do |link|
-        puts "fetching #{link}"
-        sub_doc = get_doc(link)
-        name = sub_doc.css('.mgSubTitleTxt').text
-        committee_name = name.split(' - ')[0]
-        committee = council.committees.find_or_create_by!(name: committee_name)
+          match = /\d{2}:\d{2}\s+(.*)/.match(date_link.text)
+          name = match.captures[0] if match
 
-        meeting = council.meetings.find_or_create_by!(url: link)
-        meeting.update!(name:, committee:, date: beginning_of_week + day.days)
+          committee = council.committees.find_or_create_by!(name: name)
 
-        ScrapeMeetingWorker.new.perform(meeting.id)
+          meeting = council.meetings.find_or_create_by!(url: date_link['href'])
+          meeting.update!(committee:, date: this_day)
+
+          ScrapeMeetingWorker.new.perform(meeting.id)
+        end
+      end
+
+      Rails.logger.debug links
+    when Council.modern_gov
+      url = make_url(council.base_scrape_url, beginning_of_week)
+      Rails.logger.debug "fetching #{url}"
+      base_domain = 'https://' + URI(url).host
+      doc = get_doc(url)
+
+      Rails.logger.debug beginning_of_week
+      7.times do |day|
+        block = doc.css('.mgCalendarWeekGrid')[day]
+        next if block.nil?
+
+        links = block.css('a').map { |link| URI.join(base_domain, link['href']).to_s }
+
+        Rails.logger.debug links
+
+        links.each do |link|
+          Rails.logger.debug "fetching #{link}"
+          sub_doc = get_doc(link)
+          name = sub_doc.css('.mgSubTitleTxt').text
+          committee_name = name.split(' - ')[0]
+          committee = council.committees.find_or_create_by!(name: committee_name)
+
+          meeting = council.meetings.find_or_create_by!(url: link)
+          meeting.update!(name:, committee:, date: beginning_of_week + day.days)
+
+          ScrapeMeetingWorker.new.perform(meeting.id)
+        end
       end
     end
 
@@ -42,7 +80,7 @@ class ScrapeCouncilWorker
 
   def get_doc(url)
     uri = URI(url)
-    host = uri.host
+    uri.host
     response = Net::HTTP.get_response(uri)
     Nokogiri::HTML(response.body)
   end
