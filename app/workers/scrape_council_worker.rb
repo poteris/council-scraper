@@ -9,7 +9,7 @@ class ScrapeCouncilWorker
     council = Council.find(council_id)
     beginning_of_week = Date.parse(beginning_of_week_str)
 
-    case council.council_type
+    case council.council_type.to_sym
     when :cmis
       Rails.logger.debug "fetching #{council.base_scrape_url}"
       agent = Mechanize.new
