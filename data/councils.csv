@@ -1,21 +1,16 @@
 id,name,url
-2,Cambridgeshire,https://democracy.cambridge.gov.uk/mgCalendarMonthView.aspx
 4,Derbyshire,https://democracy.derbyshire.gov.uk/mgCalendarMonthView.aspx
 5,Devon,https://democracy.devon.gov.uk/mgCalendarMonthView.aspx/
 7,East Sussex,https://democracy.eastsussex.gov.uk/mgCalendarMonthView.aspx
-8,Essex,https://democracy.southend.gov.uk/mgCalendarMonthView.aspx
 9,Gloucestershire,https://glostext.gloucestershire.gov.uk/mgCalendarMonthView.aspx
 10,Hampshire,https://democracy.hants.gov.uk/mgCalendarMonthView.aspx
 11,Hertfordshire,https://democracy.hertfordshire.gov.uk/mgCalendarMonthView.aspx
 12,Kent,https://democracy.kent.gov.uk/mgCalendarMonthView.aspx
 13,Lancashire,https://council.lancashire.gov.uk/mgCalendarMonthView.aspx
-14,Leicestershire,https://cabinet.leicester.gov.uk/mgCalendarMonthView.aspx
+14,Leicestershire,https://democracy.leics.gov.uk/mgCalendarMonthView.aspx
 15,Lincolnshire,https://lincolnshire.moderngov.co.uk/mgCalendarMonthView.aspx
-16,Norfolk,https://democracy.west-norfolk.gov.uk/mgCalendarMonthView.aspx
-19,Nottinghamshire,https://committee.nottinghamcity.gov.uk/mgCalendarMonthView.aspx
 20,Oxfordshire,https://mycouncil.oxfordshire.gov.uk/mgCalendarMonthView.aspx
 22,Staffordshire,https://moderngov.staffordshire.gov.uk/mgCalendarMonthView.aspx
-23,Suffolk,https://democracy.westsuffolk.gov.uk/mgCalendarMonthView.aspx
 24,Surrey,https://mycouncil.surreycc.gov.uk/mgCalendarMonthView.aspx
 25,Warwickshire,https://democracy.warwickshire.gov.uk/mgCalendarMonthView.aspx
 26,West Sussex,https://westsussex.moderngov.co.uk/mgCalendarMonthView.aspx
@@ -31,7 +26,7 @@ id,name,url
 40,Breckland,https://democracy.breckland.gov.uk/mgCalendarMonthView.aspx
 42,Bromsgrove,https://moderngovwebpublic.bromsgrove.gov.uk/mgCalendarMonthView.aspx
 43,Broxtowe,https://democracy.broxtowe.gov.uk/mgCalendarMonthView.aspx
-44,Canterbury,https://democracy.kent.gov.uk/mgCalendarMonthView.aspx
+44,Canterbury,https://democracy.canterbury.gov.uk/mgCalendarMonthView.aspx
 45,Charnwood,https://charnwood.moderngov.co.uk/mgCalendarMonthView.aspx
 47,Chesterfield,https://chesterfield.moderngov.co.uk/mgCalendarMonthView.aspx
 48,Chichester,https://chichester.moderngov.co.uk/mgCalendarMonthView.aspx
@@ -43,22 +38,17 @@ id,name,url
 59,East Devon,https://democracy.eastdevon.gov.uk/mgCalendarMonthView.aspx
 61,East Hampshire,https://easthants.moderngov.co.uk/mgCalendarMonthView.aspx
 62,East Hertfordshire,https://democracy.eastherts.gov.uk/mgCalendarMonthView.aspx
-63,East Lindsey,https://democracy.west-lindsey.gov.uk/mgCalendarMonthView.aspx
-65,East Staffordshire,https://moderngov.staffordshire.gov.uk/mgCalendarMonthView.aspx
-412,East Suffolk,https://democracy.westsuffolk.gov.uk/mgCalendarMonthView.aspx
+63,East Lindsey,https://democracy.e-lindsey.gov.uk/mgCalendarMonthView.aspx
 66,Eastbourne,https://democracy.lewes-eastbourne.gov.uk/mgCalendarMonthView.aspx
 69,Epsom and Ewell,https://democracy.epsom-ewell.gov.uk/mgCalendarMonthView.aspx
 70,Erewash,https://moderngov.erewash.gov.uk/mgCalendarMonthView.aspx
 71,Fenland,https://www.fenland.gov.uk/localgov/mgCalendarMonthView.aspx
 123,Folkestone and Hythe,https://folkestone-hythe.moderngov.co.uk/mgCalendarMonthView.aspx
-73,Forest of Dean,https://glostext.gloucestershire.gov.uk/mgCalendarMonthView.aspx
-74,Fylde,https://wyre.moderngov.co.uk/mgCalendarMonthView.aspx
+73,Forest of Dean,https://meetings.fdean.gov.uk/mgCalendarMonthView.aspx
 75,Gedling,https://democracy.gedling.gov.uk/mgCalendarMonthView.aspx
 77,Gravesham,https://democracy.gravesham.gov.uk/mgCalendarMonthView.aspx
-190,Great Yarmouth,https://democracy.west-norfolk.gov.uk/mgCalendarMonthView.aspx
 78,Guildford,https://democracy.guildford.gov.uk/mgCalendarMonthView.aspx
-80,Harborough,https://politics.leics.gov.uk/mgCalendarMonthView.aspx
-83,Hertsmere,https://democracy.hertfordshire.gov.uk/mgCalendarMonthView.aspx
+83,Hertsmere,https://hertsmere.moderngov.co.uk/mgCalendarMonthView.aspx
 84,High Peak,https://democracy.highpeak.gov.uk/mgCalendarMonthView.aspx
 85,Hinckley and Bosworth,https://moderngov.hinckley-bosworth.gov.uk/mgCalendarMonthView.aspx
 86,Horsham,https://horsham.moderngov.co.uk/mgCalendarMonthView.aspx
@@ -68,8 +58,8 @@ id,name,url
 91,Lewes,https://democracy.lewes-eastbourne.gov.uk/mgCalendarMonthView.aspx
 92,Lichfield,https://democracy.lichfielddc.gov.uk/mgCalendarMonthView.aspx
 93,Maldon,https://democracy.maldon.gov.uk/mgCalendarMonthView.aspx
-94,Malvern Hills,https://worcestershire.moderngov.co.uk/mgCalendarMonthView.aspx
-95,Mansfield,https://democracy.newark-sherwooddc.gov.uk/mgCalendarMonthView.aspx
+94,Malvern Hills,https://moderngov.malvernhills.gov.uk/mgCalendarMonthView.aspx
+95,Mansfield,https://mansfield.moderngov.co.uk/mgCalendarMonthView.aspx
 96,Melton,https://democracy.melton.gov.uk/mgCalendarMonthView.aspx
 98,Mid Devon,https://democracy.middevon.gov.uk/mgCalendarMonthView.aspx
 99,Mid Suffolk,https://baberghmidsuffolk.moderngov.co.uk/mgCalendarMonthView.aspx
@@ -80,7 +70,7 @@ id,name,url
 104,North Devon,https://democracy.northdevon.gov.uk/mgCalendarMonthView.aspx
 106,North East Derbyshire,https://democracy.ne-derbyshire.gov.uk/mgCalendarMonthView.aspx
 199,North Hertfordshire,https://democracy.north-herts.gov.uk/mgCalendarMonthView.aspx
-107,North Kesteven,https://moderngov.southkesteven.gov.uk/mgCalendarMonthView.aspx
+107,North Kesteven,https://democracy.n-kesteven.gov.uk/mgCalendarMonthView.aspx
 108,North Norfolk,https://modgov.north-norfolk.gov.uk/mgCalendarMonthView.aspx
 110,North West Leicestershire,https://minutes-1.nwleics.gov.uk/mgCalendarMonthView.aspx
 112,Oadby and Wigston,https://moderngov.oadby-wigston.gov.uk/mgCalendarMonthView.aspx
@@ -89,16 +79,13 @@ id,name,url
 117,Rushcliffe,https://democracy.rushcliffe.gov.uk/mgCalendarMonthView.aspx
 122,Sevenoaks,https://cds.sevenoaks.gov.uk/mgCalendarMonthView.aspx
 125,South Cambridgeshire,https://scambs.moderngov.co.uk/mgCalendarMonthView.aspx
-126,South Derbyshire,https://democracy.derbyshire.gov.uk/mgCalendarMonthView.aspx
 127,South Hams,http://mg.swdevon.gov.uk/mgCalendarMonthView.aspx
 128,South Holland,https://democracy.sholland.gov.uk/mgCalendarMonthView.aspx
 129,South Kesteven,https://moderngov.southkesteven.gov.uk/mgCalendarMonthView.aspx
-131,South Norfolk,https://democracy.west-norfolk.gov.uk/mgCalendarMonthView.aspx
+131,South Norfolk,https://democracy.southnorfolkandbroadland.gov.uk/mgCalendarMonthView.aspx
 133,South Oxfordshire,https://democratic.southoxon.gov.uk/mgCalendarMonthView.aspx
-134,South Ribble,https://council.lancashire.gov.uk/mgCalendarMonthView.aspx
-136,South Staffordshire,https://moderngov.staffordshire.gov.uk/mgCalendarMonthView.aspx
+134,South Ribble,https://southribble.moderngov.co.uk/mgCalendarMonthView.aspx
 137,Spelthorne,https://democracy.spelthorne.gov.uk/mgCalendarMonthView.aspx
-407,Stafford,https://moderngov.staffordshire.gov.uk/mgCalendarMonthView.aspx
 139,Staffordshire Moorlands,https://democracy.staffsmoorlands.gov.uk/mgCalendarMonthView.aspx
 140,Stratford-on-Avon,https://democracy.stratford.gov.uk/mgCalendarMonthView.aspx
 212,Stroud,https://stroud.moderngov.co.uk/mgCalendarMonthView.aspx
@@ -113,14 +100,12 @@ id,name,url
 151,Torridge,https://democracy.torridge.gov.uk/mgCalendarMonthView.aspx
 152,Uttlesford,https://uttlesford.moderngov.co.uk/mgCalendarMonthView.aspx
 153,Vale of White Horse,https://democratic.whitehorsedc.gov.uk/mgCalendarMonthView.aspx
-154,Warwick,https://democracy.warwickshire.gov.uk/mgCalendarMonthView.aspx
 156,Waverley,https://modgov.waverley.gov.uk/mgCalendarMonthView.aspx
 159,West Devon,http://mg.swdevon.gov.uk/mgCalendarMonthView.aspx
 160,West Lindsey,https://democracy.west-lindsey.gov.uk/mgCalendarMonthView.aspx
 410,West Suffolk,https://democracy.westsuffolk.gov.uk/mgCalendarMonthView.aspx
-162,Wychavon,https://worcestershire.moderngov.co.uk/mgCalendarMonthView.aspx
+162,Wychavon,https://mgov.wychavon.gov.uk/mgCalendarMonthView.aspx
 164,Wyre,https://wyre.moderngov.co.uk/mgCalendarMonthView.aspx
-226,Wyre Forest,https://wyre.moderngov.co.uk/mgCalendarMonthView.aspx
 165,Adur,https://democracy.adur-worthing.gov.uk/mgCalendarMonthView.aspx
 166,Cheltenham,https://democracy.cheltenham.gov.uk/mgCalendarMonthView.aspx
 189,Fareham,https://moderngov.fareham.gov.uk/mgCalendarMonthView.aspx
@@ -129,10 +114,8 @@ id,name,url
 172,Basingstoke and Deane,https://democracy.basingstoke.gov.uk/mgCalendarMonthView.aspx
 173,Brentwood,https://brentwood.moderngov.co.uk/mgCalendarMonthView.aspx
 176,Cambridge,https://democracy.cambridge.gov.uk/mgCalendarMonthView.aspx
-177,Cannock Chase,https://moderngov.cheshireeast.gov.uk/ecminutes/mgCalendarMonthView.aspx
 180,Cherwell,http://modgov.cherwell.gov.uk/mgCalendarMonthView.aspx
 181,Chorley,https://democracy.chorley.gov.uk/mgCalendarMonthView.aspx
-182,Colchester,https://tdcdemocracy.tendringdc.gov.uk/mgCalendarMonthView.aspx
 184,Crawley,https://democracy.crawley.gov.uk/mgCalendarMonthView.aspx
 67,Eastleigh,https://meetings.eastleigh.gov.uk/mgCalendarMonthView.aspx
 186,Elmbridge,https://mygov.elmbridge.gov.uk/mgCalendarMonthView.aspx
@@ -144,15 +127,13 @@ id,name,url
 194,Hyndburn,https://democracy.hyndburnbc.gov.uk/mgCalendarMonthView.aspx
 195,Ipswich,https://democracy.ipswich.gov.uk/mgCalendarMonthView.aspx
 196,Lincoln,https://democratic.lincoln.gov.uk/mgCalendarMonthView.aspx
-198,Mole Valley,https://mycouncil.surreycc.gov.uk/mgCalendarMonthView.aspx
-202,Preston,https://council.lancashire.gov.uk/mgCalendarMonthView.aspx
+202,Preston,https://preston.moderngov.co.uk/mgCalendarMonthView.aspx
 203,Redditch,https://moderngovwebpublic.redditchbc.gov.uk/mgCalendarMonthView.aspx
 204,Reigate and Banstead,https://reigate-banstead.moderngov.co.uk/mgCalendarMonthView.aspx
-205,Rochford,https://mycouncil.oxfordshire.gov.uk/mgCalendarMonthView.aspx
 207,Rugby,https://business.senedd.wales/mgCalendarMonthView.aspx
 208,Runnymede,https://democracy.runnymede.gov.uk/mgCalendarMonthView.aspx
 209,Rushmoor,https://democracy.rushmoor.gov.uk/mgCalendarMonthView.aspx
-210,St Albans,https://democracy.hertfordshire.gov.uk/mgCalendarMonthView.aspx
+210,St Albans,https://stalbans.moderngov.co.uk/mgCalendarMonthView.aspx
 211,Stevenage,https://democracy.stevenage.gov.uk/mgCalendarMonthView.aspx
 213,Tamworth,https://democracy.tamworth.gov.uk/mgCalendarMonthView.aspx
 214,Tandridge,https://tandridge.moderngov.co.uk/mgCalendarMonthView.aspx
@@ -164,7 +145,7 @@ id,name,url
 220,West Oxfordshire,https://meetings.westoxon.gov.uk/mgCalendarMonthView.aspx
 222,Winchester,https://democracy.winchester.gov.uk/mgCalendarMonthView.aspx
 223,Woking,https://moderngov.woking.gov.uk/mgCalendarMonthView.aspx
-224,Worcester,https://worcestershire.moderngov.co.uk/mgCalendarMonthView.aspx
+224,Worcester,https://committee.worcester.gov.uk/mgCalendarMonthView.aspx
 225,Worthing,https://democracy.adur-worthing.gov.uk/mgCalendarMonthView.aspx
 227,Barking and Dagenham,https://modgov.lbbd.gov.uk/internet/mgCalendarMonthView.aspx
 228,Barnet,https://barnet.moderngov.co.uk/mgCalendarMonthView.aspx
@@ -198,7 +179,7 @@ id,name,url
 285,St. Helens,https://sthelens.moderngov.co.uk/mgCalendarMonthView.aspx
 293,Wirral,https://democracy.wirral.gov.uk/mgCalendarMonthView.aspx
 264,Barnsley,https://barnsleymbc.moderngov.co.uk/mgCalendarMonthView.aspx
-265,Bolton,https://bradford.moderngov.co.uk/mgCalendarMonthView.aspx
+265,Bolton,https://bolton.moderngov.co.uk/mgCalendarMonthView.aspx?GL=1&bcr=
 266,Bradford,https://bradford.moderngov.co.uk/mgCalendarMonthView.aspx
 267,Bury,https://councildecisions.bury.gov.uk/mgCalendarMonthView.aspx
 268,Calderdale,https://calderdale.moderngov.co.uk/mgCalendarMonthView.aspx
@@ -208,7 +189,7 @@ id,name,url
 273,Knowsley,https://councillors.knowsley.gov.uk/mgCalendarMonthView.aspx
 261,Leeds,https://democracy.leeds.gov.uk/mgCalendarMonthView.aspx
 262,Manchester,https://democracy.manchester.gov.uk/mgCalendarMonthView.aspx
-263,Newcastle upon Tyne,https://democracy.northtyneside.gov.uk/mgCalendarMonthView.aspx
+263,Newcastle upon Tyne,https://democracy.newcastle.gov.uk/mgCalendarMonthView.aspx
 275,North Tyneside,https://democracy.northtyneside.gov.uk/mgCalendarMonthView.aspx
 276,Oldham,https://committees.oldham.gov.uk/mgCalendarMonthView.aspx
 277,Rochdale,https://democracy.rochdale.gov.uk/mgCalendarMonthView.aspx
@@ -217,7 +198,6 @@ id,name,url
 281,Sefton,https://modgov.sefton.gov.uk/mgCalendarMonthView.aspx
 282,Sheffield,https://democracy.sheffield.gov.uk/mgCalendarMonthView.aspx
 283,Solihull,https://eservices.solihull.gov.uk/mginternet/mgCalendarMonthView.aspx
-284,South Tyneside,https://northumberland.moderngov.co.uk/mgCalendarMonthView.aspx
 286,Stockport,https://democracy.stockport.gov.uk/mgCalendarMonthView.aspx
 288,Tameside,https://tameside.moderngov.co.uk/mgCalendarMonthView.aspx
 289,Trafford,https://democratic.trafford.gov.uk/mgCalendarMonthView.aspx
@@ -228,33 +208,29 @@ id,name,url
 296,Aberdeenshire,https://aberdeenshire.moderngov.co.uk/mgCalendarMonthView.aspx
 298,Argyll and Bute,https://www.argyll-bute.gov.uk/moderngov/mgCalendarMonthView.asp
 306,City of Edinburgh,https://democracy.edinburgh.gov.uk/mgCalendarMonthView.aspx
-309,Fife,https://democracy.bcpcouncil.gov.uk/mgCalendarMonthView.aspx
-319,Renfrewshire,https://modgov.waverley.gov.uk/mgCalendarMonthView.aspx
 320,Scottish Borders,https://scottishborders.moderngov.co.uk/mgCalendarMonthView.aspx
 327,Bath and North East Somerset,https://democracy.bathnes.gov.uk/mgCalendarMonthView.aspx
 329,Blackpool,https://democracy.blackpool.gov.uk/mgCalendarMonthView.aspx
-409,"Bournemouth, Christchurch and Poole",https://democracy.bcpcouncil.gov.uk/mgCalendarMonthView.aspx
+409,Bournemouth, Christchurch and Poole,https://democracy.bcpcouncil.gov.uk/mgCalendarMonthView.aspx
 331,Bracknell Forest,https://democratic.bracknell-forest.gov.uk/mgCalendarMonthView.aspx
 332,Brighton and Hove,https://democracy.brighton-hove.gov.uk/mgCalendarMonthView.aspx
-366,"Bristol, City of",https://democracy.bristol.gov.uk/mgCalendarMonthView.aspx
+366,Bristol, City of,https://democracy.bristol.gov.uk/mgCalendarMonthView.aspx
 413,Buckinghamshire,https://buckinghamshire.moderngov.co.uk/mgCalendarMonthView.aspx
 334,Cheshire East,https://moderngov.cheshireeast.gov.uk/ecminutes/mgCalendarMonthView.aspx
-335,Cheshire West and Chester,https://democracy.wirral.gov.uk/mgCalendarMonthView.aspx
-336,Cornwall,https://democracy.plymouth.gov.uk/mgCalendarMonthView.aspx
+335,Cheshire West and Chester,https://cmttpublic.cheshirewestandchester.gov.uk/mgCalendarMonthView.aspx
+336,Cornwall,https://democracy.cornwall.gov.uk/mgCalendarMonthView.aspx
 338,County Durham,https://democracy.durham.gov.uk/mgCalendarMonthView.aspx
 418,Cumberland,https://cumberland.moderngov.co.uk/mgCalendarMonthView.aspx
 337,Darlington,https://democracy.darlington.gov.uk/mgCalendarMonthView.aspx
-367,Derby,https://democracy.derbyshire.gov.uk/mgCalendarMonthView.aspx
 408,Dorset,https://moderngov.dorsetcouncil.gov.uk/mgCalendarMonthView.aspx
-339,East Riding of Yorkshire,https://edemocracy.northyorks.gov.uk/mgCalendarMonthView.aspx
-340,"Herefordshire, County of",https://councillors.herefordshire.gov.uk/mgCalendarMonthView.aspx
+340,Herefordshire, County of,https://councillors.herefordshire.gov.uk/mgCalendarMonthView.aspx
 342,Isle of Wight,https://iow.moderngov.co.uk/mgCalendarMonthView.aspx
 343,Leicester,https://cabinet.leicester.gov.uk/mgCalendarMonthView.aspx
 345,Medway,https://democracy.medway.gov.uk/mgCalendarMonthView.aspx
 346,Middlesbrough,https://moderngov.middlesbrough.gov.uk/mgCalendarMonthView.aspx
 347,North Lincolnshire,https://northlincolnshire.moderngov.co.uk/mgCalendarMonthView.aspx
 414,North Northamptonshire,https://northnorthants.moderngov.co.uk/mgCalendarMonthView.aspx
-348,North Somerset,https://democracy.somerset.gov.uk/mgCalendarMonthView.aspx
+348,North Somerset,https://n-somerset.moderngov.co.uk/mgCalendarMonthView.aspx
 417,North Yorkshire,https://edemocracy.northyorks.gov.uk/mgCalendarMonthView.aspx
 349,Northumberland,https://northumberland.moderngov.co.uk/mgCalendarMonthView.aspx
 350,Nottingham,https://committee.nottinghamcity.gov.uk/mgCalendarMonthView.aspx
@@ -262,11 +238,10 @@ id,name,url
 354,Shropshire,https://shropshire.gov.uk/committee-services/mgCalendarMonthView.aspx
 376,Slough,http://democracy.slough.gov.uk/mgCalendarMonthView.asp
 416,Somerset,https://democracy.somerset.gov.uk/mgCalendarMonthView.aspx
-355,South Gloucestershire,https://glostext.gloucestershire.gov.uk/mgCalendarMonthView.aspx
-357,Stoke-on-Trent,https://moderngov.staffordshire.gov.uk/mgCalendarMonthView.aspx
+355,South Gloucestershire,https://council.southglos.gov.uk/mgCalendarMonthView.aspx
+357,Stoke-on-Trent,https://moderngov.stoke.gov.uk/mgCalendarMonthView.aspx
 358,Telford and Wrekin,https://democracy.telford.gov.uk/mgCalendarMonthView.aspx
 359,Torbay,http://www.torbay.gov.uk/DemocraticServices/mgCalendarMonthView.aspx
-360,Warrington,https://moderngov.cheshireeast.gov.uk/ecminutes/mgCalendarMonthView.aspx
 415,West Northamptonshire,https://westnorthants.moderngov.co.uk/mgCalendarMonthView.aspx
 419,Westmorland and Furness,https://westmorlandandfurness.moderngov.co.uk/mgCalendarMonthView.aspx
 362,Wiltshire,https://cms.wiltshire.gov.uk/mgCalendarMonthView.aspx
@@ -288,7 +263,7 @@ id,name,url
 385,Cardiff,https://cardiff.moderngov.co.uk/mgCalendarMonthView.aspx
 386,Carmarthenshire,https://democracy.carmarthenshire.gov.wales/mgCalendarMonthView.aspx
 387,Ceredigion,https://council.ceredigion.gov.uk/mgCalendarMonthView.aspx
-388,Conwy,https://moderngov.denbighshire.gov.uk/mgCalendarMonthView.aspx
+388,Conwy,https://modgovpub-eng.secure.conwy.gov.uk/mgCalendarMonthView.aspx
 389,Denbighshire,https://moderngov.denbighshire.gov.uk/mgCalendarMonthView.aspx
 390,Flintshire,https://committeemeetings.flintshire.gov.uk/mgCalendarMonthView.aspx
 391,Gwynedd,https://democracy.gwynedd.llyw.cymru/mgCalendarMonthView.aspx

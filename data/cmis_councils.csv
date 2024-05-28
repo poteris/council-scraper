@@ -13,7 +13,7 @@ id,name,url
 19,Nottinghamshire,https://www.nottinghamshire.gov.uk/dms/Meetings.aspx
 325,West Dunbartonshire,https://wdccmis.west-dunbarton.gov.uk/cmis5/Meetings.aspx
 2,Cambridgeshire,https://cambridgeshire.cmis.uk.com/ccc_live/Meetings.aspx
-341,"Kingston upon Hull, City of",https://cmis.hullcc.gov.uk/cmis/CalendarofMeetings.aspx
+341,Kingston upon Hull, City of,https://cmis.hullcc.gov.uk/cmis/CalendarofMeetings.aspx
 291,Walsall,https://cmispublic.walsall.gov.uk/cmis/Meetings.aspx
 318,Perth and Kinross,https://perth-and-kinross.cmis.uk.com/perth-and-kinross/Meetings.aspx
 74,Fylde,https://fylde.cmis.uk.com/fylde/MeetingsCalendar.aspx
@@ -27,3 +27,6 @@ id,name,url
 316,North Lanarkshire,https://northlanarkshire.cmis.uk.com/Meetings.aspx
 287,Sunderland,https://committees.sunderland.gov.uk/committees/cmis5/Meetings.aspx
 205,Rochford,https://rochford.cmis.uk.com/rochford/Meetings.aspx
+80,Harborough,https://cmis.harborough.gov.uk/cmis5/Meetings.aspx
+367,Derby,https://democracy.derby.gov.uk/MeetingsCalendar.aspx
+360,Warrington,https://cmis.warrington.gov.uk/cmis5/MeetingsCalendar.aspx
