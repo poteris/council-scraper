@@ -73,6 +73,8 @@ class ScrapeCouncilWorker
           ScrapeMeetingWorker.new.perform(meeting.id)
         end
       end
+    else
+      raise RuntimeError, "unexpected council type #{council.council_type}"
     end
 
     council_sync.update!(status: 'processed', last_synced_at: Time.now.utc)
