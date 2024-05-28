@@ -10,7 +10,7 @@ class ScrapeCouncilWorker
     beginning_of_week = Date.parse(beginning_of_week_str)
 
     case council.council_type
-    when Council.cmis
+    when :cmis
       Rails.logger.debug "fetching #{council.base_scrape_url}"
       agent = Mechanize.new
       agent.get(council.base_scrape_url)
@@ -45,7 +45,7 @@ class ScrapeCouncilWorker
       end
 
       Rails.logger.debug links
-    when Council.modern_gov
+    when :modern_gov
       url = make_url(council.base_scrape_url, beginning_of_week)
       Rails.logger.debug "fetching #{url}"
       base_domain = 'https://' + URI(url).host

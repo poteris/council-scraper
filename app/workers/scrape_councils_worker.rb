@@ -3,12 +3,12 @@ class ScrapeCouncilsWorker
 
   def perform(num_weeks_back = 4)
     CSV.foreach('data/councils.csv', headers: true) do |row|
-      council = Council.find_or_create_by!(external_id: row['id'], council_type: Council.modern_gov)
+      council = Council.find_or_create_by!(external_id: row['id'], council_type: :modern_gov)
       council.update!(name: row['name'], base_scrape_url: row['url'])
     end
 
     CSV.foreach('data/cmis_councils.csv', headers: true) do |row|
-      council = Council.find_or_create_by!(external_id: row['id'], council_type: Council.cmis)
+      council = Council.find_or_create_by!(external_id: row['id'], council_type: :cmis)
       council.update!(name: row['name'], base_scrape_url: row['url'])
     end
 
