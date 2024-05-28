@@ -47,7 +47,7 @@ class ScrapeMeetingWorker
   end
 
   def get_printed_minutes(doc, meeting_date, council_type)
-    if council_type == Council.cmis
+    if council_type.to_sym == :cmis
       minutes = doc.xpath(
         '//a[@class="TitleLink"][contains(@id, "cmisDocuments")][contains(lower-case(text()),"minutes")|contains(lower-case(text()),"notes")]'
       )
