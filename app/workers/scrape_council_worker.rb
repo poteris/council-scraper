@@ -16,7 +16,7 @@ class ScrapeCouncilWorker
       page = agent.get(council.base_scrape_url)
 
       if (form = page.forms&.first) && (button = form.submits.filter { |s| s.value == 'Printer Friendly View' }&.first)
-        form.click_button button
+        page = agent.submit(form, button)
       end
 
       if page.xpath("//*[contains(concat(' ',normalize-space(@class),' '),' rgHeader ')][text()=\"Venue\"]")
