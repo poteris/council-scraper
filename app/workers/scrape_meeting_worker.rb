@@ -70,7 +70,7 @@ class ScrapeMeetingWorker
         this_minute = dated_minutes_links.first
       end
 
-      this_minute ? [this_minute['href']] : []
+      this_minute ? [this_minute[0]['href']] : []
     else
       links = doc.css('.mgContent a, .mgActionList a')
                  .select do |link|
