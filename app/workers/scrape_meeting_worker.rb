@@ -57,7 +57,11 @@ class ScrapeMeetingWorker
         end.new
       )
 
-      dated_minutes_links = minutes.map { |link| [link, Date.parse(link.text)] }
+      dated_minutes_links = minutes.map do |link|
+        [link, Date.parse(link.text)]
+      rescue Date::Error
+        [link, nil]
+      end
 
       if dated_minutes_links.any? { |link_and_date| link_and_date[1] != nil }
         this_minute = dated_minutes_links.select { |link| link[1] == meeting_date }&.first
