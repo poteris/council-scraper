@@ -49,19 +49,24 @@ class ScrapeMeetingWorker
   def get_printed_minutes(doc, meeting_date, council_type)
     if council_type.to_sym == :cmis
       minutes = doc.xpath(
-        '//a[@class="TitleLink"][contains(@id, "cmisDocuments")][contains(lower-case(text()),"minutes")|contains(lower-case(text()),"notes")]'
+        '//a[@class="TitleLink"][contains(@id, "cmisDocuments")][nokogiri:contains_insensitive(text(), "minutes", "notes")]',
+        Class.new do
+          def contains_insensitive(node_set, *possible_matches)
+            node_set.find_all { |node| possible_matches.any? { |match| node.to_s.downcase.include? match } }
+          end
+        end.new
       )
 
       dated_minutes_links = minutes.map { |link| [link, Date.parse(link.text)] }
 
-      if dated_minutes_links.any { |link_and_date| link_and_date[1] != nil }
+      if dated_minutes_links.any? { |link_and_date| link_and_date[1] != nil }
         this_minute = dated_minutes_links.select { |link| link[1] == meeting_date }&.first
-        this_minute = minutes.select { |link| link[1] == nil } unless this_minute
+        this_minute = dated_minutes_links.select { |link| link[1] == nil }&.first unless this_minute
       else
         this_minute = dated_minutes_links.first
       end
 
-      [this_minute]
+      this_minute ? [this_minute['href']] : []
     else
       links = doc.css('.mgContent a, .mgActionList a')
                  .select do |link|
@@ -103,7 +108,7 @@ class ScrapeMeetingWorker
     pp links
     links.map do |link|
       main_url = link.split('?')[0]
-      if main_url.downcase.ends_with?('.pdf') || main_url.downcase.ends_with?('.doc') || main_url.downcase.ends_with?('.docx')
+      if main_url =~ /Document\.ashx|\.(pdf|docx?)$/i
         puts link
         link
       elsif depth < 2 && !link.include?('mgMeetingAttendance.aspx') && !link.include?('mgLocationDetails.aspx') && !link.include?('mgIssueHistoryHome.aspx') && !link.include?('mgIssueHistoryChronology.aspx') && !link.include?('ieIssueDetails.aspx') && !link.include?('mgUserInfo.aspx')
@@ -132,9 +137,7 @@ class ScrapeMeetingWorker
   end
 
   def get_doc(url)
-    uri = URI(url)
-    host = uri.host
-    response = Net::HTTP.get_response(uri)
-    Nokogiri::HTML(response.body)
+    agent = Mechanize.new
+    agent.get(url)
   end
 end

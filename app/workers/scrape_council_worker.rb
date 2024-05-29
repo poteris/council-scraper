@@ -13,23 +13,23 @@ class ScrapeCouncilWorker
     when :cmis
       Rails.logger.debug "fetching #{council.base_scrape_url}"
       agent = Mechanize.new
-      agent.get(council.base_scrape_url)
+      page = agent.get(council.base_scrape_url)
 
-      if (form = agent.forms & [0]) && (button = form.submits.filter { |s| s.value == 'Printer Friendly View' } & [0])
+      if (form = page.forms&.first) && (button = form.submits.filter { |s| s.value == 'Printer Friendly View' }&.first)
         form.click_button button
       end
 
-      if agent.css('.rgHeader').filter { |h| h.text == 'Venue' }
-        meeting_link = agent.css('.rgMasterTable a').first['href']
+      if page.xpath("//*[contains(concat(' ',normalize-space(@class),' '),' rgHeader ')][text()=\"Venue\"]")
+        meeting_link = page.css('.rgMasterTable a').first['href']
         calendar_link = meeting_link.gsub(
           /(tabid\/\d+)\/ctl\/\w+\/(mid\/\d+)\/.*/,
-          "\1/ctl/MeetingCalendarPublicNoJava/\2/Date/#{beginning_of_week.strftime('%Y-%m-%d')}/Default.aspx"
+          "\\1/ctl/MeetingCalendarPublicNoJava/\\2/Date/#{beginning_of_week.strftime('%Y-%m-%d')}/Default.aspx"
         )
-        agent.goto(calendar_link)
+        page = agent.get(calendar_link)
       end
 
-      [0..6].map { |n| beginning_of_week + n.days }.each do |this_day|
-        if (date_link = agent.xpath("//table//td[text()=\"#{this_day.strftime('%A, %-d %B')}\"]/following-sibling::td//a"))
+      (0..6).map { |n| beginning_of_week + n.days }.each do |this_day|
+        if (date_link = page.at_xpath("//table//td[text()=\"#{this_day.strftime('%A, %-d %B')}\"]/following-sibling::td//a"))
           name = "Unknown committee"
 
           match = /\d{2}:\d{2}\s+(.*)/.match(date_link.text)
@@ -43,8 +43,6 @@ class ScrapeCouncilWorker
           ScrapeMeetingWorker.new.perform(meeting.id)
         end
       end
-
-      Rails.logger.debug links
     when :modern_gov
       url = make_url(council.base_scrape_url, beginning_of_week)
       Rails.logger.debug "fetching #{url}"
