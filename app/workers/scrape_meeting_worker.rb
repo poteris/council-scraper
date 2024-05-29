@@ -101,7 +101,7 @@ class ScrapeMeetingWorker
       doc_or_url = get_doc(doc_or_url)
     end
 
-    return [] if doc_or_url.is_a?(Mechanize::File)
+    return [] if doc_or_url.is_a?(Mechanize::File) && !doc_or_url.is_a?(Mechanize::Page)
 
     links = doc_or_url.css('.mgContent a, .mgLinks a, .DocumentListItem a').map { |link| link['href'].to_s }.compact.uniq.map do |link|
       clean_link = link.gsub(' ', '+')
@@ -117,7 +117,7 @@ class ScrapeMeetingWorker
       if main_url =~ /Document\.ashx|\.(pdf|docx?)$/i
         puts link
         link
-      elsif depth < 2 && link !=~ /mg(MeetingAttendance|LocationDetails|IssueHistoryHome|IssueHistoryChronology|UserInfo|VCalendar)\.aspx/
+      elsif depth < 2 && !(link =~ /mg(MeetingAttendance|LocationDetails|IssueHistoryHome|IssueHistoryChronology|UserInfo|VCalendar)\.aspx/)
         recursive_get_pdfs(link, depth + 1)
       else
         []
