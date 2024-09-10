@@ -3,6 +3,8 @@ class Document < ApplicationRecord
   has_one :council, through: :meeting
   has_many :document_classifications
 
+  has_one_attached :file
+
   PROCESSING_STATUSES = %w[waiting processing processed failed].freeze
   DOCUMENT_KINDS = %w[unclassified meeting_notes other].freeze # TODO: expand classifications
 
@@ -25,6 +27,8 @@ class Document < ApplicationRecord
           temp_pdf.binmode
           temp_pdf.write(response.body)
           temp_pdf.rewind
+
+          file.attach(io: temp_pdf, filename: "#{name.underscore.parameterize}.pdf", content_type: 'application/pdf')
 
           # Extract text from the PDF
           reader = PDF::Reader.new(temp_pdf.path)
