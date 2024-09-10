@@ -13,6 +13,7 @@ digitalocean:
   secret_access_key: <%= ENV["COUNCIL_SCRAPER_S3_ACCESS_KEY"] %>
   endpoint: https://lon1.digitaloceanspaces.com
   bucket: poteris-scraped-council-minutes
+  region: unused # needs to be provided for it to work
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
