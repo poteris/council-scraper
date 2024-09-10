@@ -28,7 +28,7 @@ class Document < ApplicationRecord
           temp_pdf.write(response.body)
           temp_pdf.rewind
 
-          file.attach(io: temp_pdf, filename: "#{name.underscore.parameterize}.pdf", content_type: 'application/pdf')
+          file.attach(io: temp_pdf, filename: "#{self.name&.underscore&.parameterize || 'document'}.pdf", content_type: 'application/pdf')
 
           # Extract text from the PDF
           reader = PDF::Reader.new(temp_pdf.path)
