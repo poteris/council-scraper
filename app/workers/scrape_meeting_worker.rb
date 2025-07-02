@@ -144,6 +144,9 @@ class ScrapeMeetingWorker
 
   def get_doc(url)
     agent = Mechanize.new
+    agent.idle_timeout = 3 # seconds
+    agent.open_timeout = 5 # seconds
+    agent.read_timeout = 15 # seconds
     agent.get(url)
   end
 end
