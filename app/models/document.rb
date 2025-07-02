@@ -32,8 +32,10 @@ class Document < ApplicationRecord
 
           text = Timeout.timeout(45) {
             # Extract text from the PDF
-            reader = PDF::Reader.new(temp_pdf.path)
-            return reader.pages.map(&:text).join("\n").gsub(/\n{2,}/, "\n").gsub("\u0000", "") # remove null bytes, multiple newlines
+            PDF::Reader.new(temp_pdf.path).pages
+                                          .map(&:text).join("\n")
+                                          .gsub(/\n{2,}/, "\n")
+                                          .gsub("\u0000", "") # remove null bytes, multiple newlines
           }
 
           update!(text: text, etag: etag, extract_status: 'success')
