@@ -30,7 +30,7 @@ class Document < ApplicationRecord
 
           file.attach(io: temp_pdf, filename: "#{self.name&.underscore&.parameterize || 'document'}.pdf", content_type: 'application/pdf')
 
-          text = Timeout.timeout(5) {
+          text = Timeout.timeout(45) {
             # Extract text from the PDF
             reader = PDF::Reader.new(temp_pdf.path)
             return reader.pages.map(&:text).join("\n").gsub(/\n{2,}/, "\n").gsub("\u0000", "") # remove null bytes, multiple newlines
