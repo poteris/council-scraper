@@ -89,7 +89,7 @@ class ScrapeCouncilWorker
     week_number = beginning_of_week.strftime('%W').to_i
     year = beginning_of_week.strftime('%Y').to_i
 
-    url.gsub('mgCalendarMonthView.aspx',
+    url.gsub(/mgCalendarMonthView\.aspx?/,
              'mgCalendarWeekView.aspx') + "?WN=#{week_number}&CID=0&OT=&C=-1&MR=0&DL=0&ACT=Later&DD=#{year}"
   end
 end

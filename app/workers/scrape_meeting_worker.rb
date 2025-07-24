@@ -84,7 +84,7 @@ class ScrapeMeetingWorker
         clean_link = link.gsub(' ', '+')
         begin
           URI.join(base_domain, clean_link).to_s
-        rescue URI::InvalidURIError
+        rescue URI::InvalidURIError, URI::InvalidComponentError
           nil
         end
       end.compact
@@ -107,7 +107,7 @@ class ScrapeMeetingWorker
       clean_link = link.gsub(' ', '+')
       begin
         URI.join(base_domain, clean_link).to_s
-      rescue URI::InvalidURIError
+      rescue URI::InvalidURIError, URI::InvalidComponentError
         nil
       end
     end.compact
