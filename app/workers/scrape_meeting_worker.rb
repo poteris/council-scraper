@@ -102,6 +102,7 @@ class ScrapeMeetingWorker
     end
 
     return [] if doc_or_url.is_a?(Mechanize::File) && !doc_or_url.is_a?(Mechanize::Page)
+    return [] if doc_or_url == false
 
     links = doc_or_url.css('.mgContent a, .mgLinks a, .DocumentListItem a').map { |link| link['href'].to_s }.compact.uniq.map do |link|
       clean_link = link.gsub(' ', '+')
@@ -148,5 +149,7 @@ class ScrapeMeetingWorker
     agent.open_timeout = 5 # seconds
     agent.read_timeout = 15 # seconds
     agent.get(url)
+  rescue Mechanize::ResponseCodeError
+    return false
   end
 end
