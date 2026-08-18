@@ -32,7 +32,6 @@ class ScrapeMeetingWorker
       pdfs = recursive_get_pdfs(meeting_doc)
       pdfs.each do |pdf|
         document = meeting.documents.find_or_create_by!(url: pdf)
-        document.update!(is_minutes: false)
         document.extract_text!
       end
 
