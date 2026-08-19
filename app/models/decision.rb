@@ -1,6 +1,7 @@
 class Decision < ApplicationRecord
   belongs_to :council
   has_many :decision_classifications
+  has_many :documents, as: :source
 
   scope :in_last, ->(days) { where('created_at >= ?', days.days.ago) }
 

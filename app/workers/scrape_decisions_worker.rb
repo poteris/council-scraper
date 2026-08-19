@@ -10,7 +10,7 @@ class ScrapeDecisionsWorker
 
     url = make_url
     puts "fetching #{url}"
-    doc = get_doc(url)
+    doc = DocFetcher.get_doc(url)
 
     links = doc.css('a[href^="ieDecisionDetails"]').map { |link| URI.join(url, link['href']).to_s }
 
@@ -25,7 +25,9 @@ class ScrapeDecisionsWorker
     decision = Decision.find_or_create_by!(url:, council:)
     return if decision.content.present?
 
-    doc = get_doc(url)
+    base_domain = 'https://' + URI(url).host
+
+    doc = DocFetcher.get_doc(url)
 
     # Initialize a hash to store the extracted data
     decision_data = {}
@@ -53,6 +55,11 @@ class ScrapeDecisionsWorker
     decision_data[:date] = Date.strptime(date_text, '%d/%m/%Y') if date_text
 
     decision.update!(decision_data)
+
+    DocFetcher.recursive_get_pdfs(base_domain, doc).each do |pdf|
+      document = decision.documents.find_or_create_by!(url: pdf)
+      document.extract_text!
+    end
   end
 
   def make_url
@@ -61,12 +68,5 @@ class ScrapeDecisionsWorker
 
     council.base_scrape_url.gsub('mgCalendarMonthView.aspx',
                                  'mgDelegatedDecisions.aspx') + "?XXR=0&&DR=#{start_date_str}-#{end_date_str}&ACT=Find&RP=0&K=0&V=0&DM=0&HD=0&DS=2&Next=true&NOW=18112023122701&META=mgdelegateddecisions"
-  end
-
-  def get_doc(url)
-    uri = URI(url)
-    host = uri.host
-    response = Net::HTTP.get_response(uri)
-    Nokogiri::HTML(response.body)
   end
 end
