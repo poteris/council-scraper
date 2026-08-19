@@ -1,7 +1,7 @@
 class Meeting < ApplicationRecord
   belongs_to :council
   belongs_to :committee, optional: true
-  has_many :documents
+  has_many :documents, as: :source
   has_many :person_meetings
   has_many :meeting_tags
   has_many :tags, through: :meeting_tags

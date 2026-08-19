@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_10_134336) do
+ActiveRecord::Schema[7.0].define(version: 2026_08_19_111848) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -118,7 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_10_134336) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.bigint "meeting_id", null: false
+    t.bigint "source_id", null: false
     t.text "name"
     t.text "url"
     t.datetime "created_at", null: false
@@ -133,7 +133,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_10_134336) do
     t.boolean "is_minutes", default: false, null: false
     t.boolean "is_media", default: false, null: false
     t.string "etag"
-    t.index ["meeting_id"], name: "index_documents_on_meeting_id"
+    t.string "source_type"
+    t.index ["source_id"], name: "index_documents_on_source_id"
   end
 
   create_table "meeting_tags", force: :cascade do |t|
@@ -201,7 +202,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_10_134336) do
   add_foreign_key "decision_classifications", "decisions"
   add_foreign_key "decisions", "councils"
   add_foreign_key "document_classifications", "documents"
-  add_foreign_key "documents", "meetings"
   add_foreign_key "meeting_tags", "meetings"
   add_foreign_key "meeting_tags", "tags"
   add_foreign_key "meetings", "committees"

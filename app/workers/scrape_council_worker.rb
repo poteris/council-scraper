@@ -47,7 +47,7 @@ class ScrapeCouncilWorker
       url = make_url(council.base_scrape_url, beginning_of_week)
       Rails.logger.debug "fetching #{url}"
       base_domain = 'https://' + URI(url).host
-      doc = get_doc(url)
+      doc = DocFetcher.get_doc(url)
 
       Rails.logger.debug beginning_of_week
       7.times do |day|
@@ -60,7 +60,7 @@ class ScrapeCouncilWorker
 
         links.each do |link|
           Rails.logger.debug "fetching #{link}"
-          sub_doc = get_doc(link)
+          sub_doc = DocFetcher.get_doc(link)
           name = sub_doc.css('.mgSubTitleTxt').text
           committee_name = name.split(' - ')[0]
           committee = council.committees.find_or_create_by!(name: committee_name)
@@ -76,13 +76,6 @@ class ScrapeCouncilWorker
     end
 
     council_sync.update!(status: 'processed', last_synced_at: Time.now.utc)
-  end
-
-  def get_doc(url)
-    uri = URI(url)
-    uri.host
-    response = Net::HTTP.get_response(uri)
-    Nokogiri::HTML(response.body)
   end
 
   def make_url(url, beginning_of_week)

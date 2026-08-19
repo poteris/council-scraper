@@ -97,15 +97,13 @@ class Integrations::Opensearch
         name: object.name,
         type: object.class.name,
         text: object.text,
-        meeting_id: object.meeting_id,
-        meeting_name: object.meeting.name,
-        organisation_ids: [object.meeting.council_id]
+        organisation_ids: [object.source.council_id]
       }
     elsif object.is_a?(DocumentClassification)
       {
         id: object.id,
         name: object.document.name,
-        organisation_ids: [object.meeting.council_id]
+        organisation_ids: [object.document.source.council_id]
       }.merge(object.output)
     else
       raise UnknownObjectError, "Don't know how to index a #{object.class.name}"

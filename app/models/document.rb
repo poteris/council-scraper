@@ -1,6 +1,6 @@
 class Document < ApplicationRecord
-  belongs_to :meeting
-  has_one :council, through: :meeting
+  belongs_to :source, polymorphic: true
+  has_one :council, through: :source
   has_many :document_classifications
 
   has_one_attached :file
