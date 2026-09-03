@@ -6,12 +6,12 @@ class DocFetcher
         return [] if doc_or_url.is_a?(String) && !doc_or_url.start_with?('http')
 
         if doc_or_url.is_a?(String)
-        puts "fetching #{doc_or_url}"
-        doc_or_url = get_doc(doc_or_url)
+            puts "fetching #{doc_or_url}"
+            doc_or_url = get_doc(doc_or_url)
         end
 
-        return [] if doc_or_url.is_a?(Mechanize::File) && !doc_or_url.is_a?(Mechanize::Page)
         return [] if doc_or_url == false
+        return [] if doc_or_url.is_a?(Mechanize::File) && !doc_or_url.is_a?(Mechanize::Page)
 
         links = doc_or_url.css('.mgContent a, .mgLinks a, .DocumentListItem a').map { |link| link['href'].to_s }.compact.uniq.map do |link|
         clean_link = link.gsub(' ', '+')
@@ -35,11 +35,15 @@ class DocFetcher
         end.flatten.uniq
     end
 
-    def get_doc(url)
+    def get_doc(url, limit = 10)
         uri = URI(url)
-        host = uri.host
         response = Net::HTTP.get_response(uri)
-        Nokogiri::HTML(response.body)
+        case response
+        when Net::HTTPSuccess then Nokogiri::HTML(response.body)
+        when Net::HTTPRedirection then get_doc(response['location'], limit - 1)
+        else
+            false
+        end
     rescue OpenSSL::SSL::SSLError
         false
     end
