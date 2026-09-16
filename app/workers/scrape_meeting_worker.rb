@@ -21,6 +21,7 @@ class ScrapeMeetingWorker
 
       puts "fetching #{meeting.url}"
       meeting_doc = get_doc(meeting.url)
+      return unless meeting_doc
 
       pdfs = get_printed_minutes(meeting_doc, meeting.date, meeting.council.council_type)
       pdfs.each do |pdf|
@@ -46,6 +47,8 @@ class ScrapeMeetingWorker
   end
 
   def get_printed_minutes(doc, meeting_date, council_type)
+    return [] unless doc
+
     if council_type.to_sym == :cmis
       minutes = doc.xpath(
         '//a[@class="TitleLink"][contains(@id, "cmisDocuments")][nokogiri:contains_insensitive(text(), "minutes", "notes")]',
@@ -91,6 +94,8 @@ class ScrapeMeetingWorker
   end
 
   def get_media(doc)
+    return [] unless doc
+
     script_content = doc.search('script').find { |script| script.content.include?('mgMeetingMedia') }
 
     if script_content
@@ -113,7 +118,7 @@ class ScrapeMeetingWorker
     agent.open_timeout = 5 # seconds
     agent.read_timeout = 15 # seconds
     agent.get(url)
-  rescue Mechanize::ResponseCodeError
-    return false
+  rescue Mechanize::ResponseCodeError, StandardError
+    DocFetcher.get_doc(url)
   end
 end

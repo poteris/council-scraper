@@ -48,11 +48,12 @@ class ScrapeCouncilWorker
       Rails.logger.debug "fetching #{url}"
       base_domain = 'https://' + URI(url).host
       doc = DocFetcher.get_doc(url)
+      return unless doc
 
       Rails.logger.debug beginning_of_week
-      7.times do |day|
-        block = doc.css('.mgCalendarWeekGrid')[day]
-        next if block.nil?
+      blocks = doc.css('.mgCalendarWeekGrid, .mgCalendarWeekTodayGrid')
+      blocks.each_with_index do |block, day|
+        break if day >= 7
 
         links = block.css('a').map { |link| URI.join(base_domain, link['href']).to_s }
 
@@ -61,8 +62,11 @@ class ScrapeCouncilWorker
         links.each do |link|
           Rails.logger.debug "fetching #{link}"
           sub_doc = DocFetcher.get_doc(link)
-          name = sub_doc.css('.mgSubTitleTxt').text
-          committee_name = name.split(' - ')[0]
+          next unless sub_doc
+
+          name = sub_doc.css('.mgSubTitleTxt').text.strip
+          name = sub_doc.css('title').text.strip if name.blank?
+          committee_name = name.split(' - ')[0].presence || "Unknown Committee"
           committee = council.committees.find_or_create_by!(name: committee_name)
 
           meeting = council.meetings.find_or_create_by!(url: link)
@@ -82,7 +86,8 @@ class ScrapeCouncilWorker
     week_number = beginning_of_week.strftime('%W').to_i
     year = beginning_of_week.strftime('%Y').to_i
 
-    url.gsub(/mgCalendarMonthView\.aspx?/,
-             'mgCalendarWeekView.aspx') + "?WN=#{week_number}&CID=0&OT=&C=-1&MR=0&DL=0&ACT=Later&DD=#{year}"
+    clean_url = url.split('?').first
+    clean_url.gsub(/mgCalendarMonthView\.aspx?/,
+                   'mgCalendarWeekView.aspx') + "?WN=#{week_number}&CID=0&OT=&C=-1&MR=0&DL=0&ACT=Later&DD=#{year}"
   end
 end

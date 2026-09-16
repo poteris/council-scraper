@@ -1,3 +1,6 @@
+require 'net/http'
+require 'uri'
+
 class EtagMatcher
   class << self
     # Checks whether a URL matches a given etag.
@@ -8,10 +11,12 @@ class EtagMatcher
     def match_url_etag(url, existing_etag, if_matched = nil)
       catch :etag_match do
         etag = nil
+        path = url.respond_to?(:request_uri) ? url.request_uri : (url.path && !url.path.empty? ? url.path : '/')
         Net::HTTP.start(url.host, url.port,
                         use_ssl: url.scheme == 'https') do |http|
-          etag = http.head(url.path)['Etag']
-          if etag.present? && existing_etag === etag
+          response = http.head(path)
+          etag = response['Etag']
+          if etag && !etag.empty? && existing_etag === etag
             throw :etag_match
           end
         end
@@ -22,6 +27,8 @@ class EtagMatcher
       end
 
       if_matched.call if if_matched
+    rescue StandardError => e
+      yield nil if block_given?
     end
   end
 end
