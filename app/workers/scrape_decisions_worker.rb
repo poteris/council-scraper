@@ -11,6 +11,7 @@ class ScrapeDecisionsWorker
     url = make_url
     puts "fetching #{url}"
     doc = DocFetcher.get_doc(url)
+    return unless doc
 
     links = doc.css('a[href^="ieDecisionDetails"]').map { |link| URI.join(url, link['href']).to_s }
 
@@ -28,6 +29,7 @@ class ScrapeDecisionsWorker
     base_domain = 'https://' + URI(url).host
 
     doc = DocFetcher.get_doc(url)
+    return unless doc
 
     # Initialize a hash to store the extracted data
     decision_data = {}
@@ -66,7 +68,8 @@ class ScrapeDecisionsWorker
     start_date_str = (Time.now.utc - 1.year).strftime('%d-%m-%Y').gsub('-', '%2f')
     end_date_str = Time.now.utc.strftime('%d-%m-%Y').gsub('-', '%2f')
 
-    council.base_scrape_url.gsub('mgCalendarMonthView.aspx',
-                                 'mgDelegatedDecisions.aspx') + "?XXR=0&&DR=#{start_date_str}-#{end_date_str}&ACT=Find&RP=0&K=0&V=0&DM=0&HD=0&DS=2&Next=true&NOW=18112023122701&META=mgdelegateddecisions"
+    clean_url = council.base_scrape_url.split('?').first
+    clean_url.gsub('mgCalendarMonthView.aspx',
+                   'mgDelegatedDecisions.aspx') + "?XXR=0&&DR=#{start_date_str}-#{end_date_str}&ACT=Find&RP=0&K=0&V=0&DM=0&HD=0&DS=2&Next=true&NOW=18112023122701&META=mgdelegateddecisions"
   end
 end

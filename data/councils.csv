@@ -162,7 +162,7 @@ id,name,url
 240,Harrow,https://moderngov.harrow.gov.uk/mgCalendarMonthView.aspx
 241,Havering,https://democracy.havering.gov.uk/mgCalendarMonthView.aspx
 242,Hillingdon,https://modgov.hillingdon.gov.uk/mgCalendarMonthView.aspx
-243,Hounslow,https://democraticservices.hounslow.gov.uk/%28S%28czobl0450xbqi155ede3ifez%29%29/mgCalendarMonthView.aspx
+243,Hounslow,https://democraticservices.hounslow.gov.uk/mgCalendarMonthView.aspx
 244,Islington,https://democracy.islington.gov.uk/mgCalendarMonthView.aspx
 246,Kingston upon Thames,https://moderngov.kingston.gov.uk/mgCalendarMonthView.aspx
 247,Lambeth,https://moderngov.lambeth.gov.uk/mgCalendarMonthView.aspx
@@ -179,7 +179,7 @@ id,name,url
 285,St. Helens,https://sthelens.moderngov.co.uk/mgCalendarMonthView.aspx
 293,Wirral,https://democracy.wirral.gov.uk/mgCalendarMonthView.aspx
 264,Barnsley,https://barnsleymbc.moderngov.co.uk/mgCalendarMonthView.aspx
-265,Bolton,https://bolton.moderngov.co.uk/mgCalendarMonthView.aspx?GL=1&bcr=
+265,Bolton,https://bolton.moderngov.co.uk/mgCalendarMonthView.aspx
 266,Bradford,https://bradford.moderngov.co.uk/mgCalendarMonthView.aspx
 267,Bury,https://councildecisions.bury.gov.uk/mgCalendarMonthView.aspx
 268,Calderdale,https://calderdale.moderngov.co.uk/mgCalendarMonthView.aspx
@@ -211,10 +211,10 @@ id,name,url
 320,Scottish Borders,https://scottishborders.moderngov.co.uk/mgCalendarMonthView.aspx
 327,Bath and North East Somerset,https://democracy.bathnes.gov.uk/mgCalendarMonthView.aspx
 329,Blackpool,https://democracy.blackpool.gov.uk/mgCalendarMonthView.aspx
-409,Bournemouth, Christchurch and Poole,https://democracy.bcpcouncil.gov.uk/mgCalendarMonthView.aspx
+409,"Bournemouth, Christchurch and Poole",https://democracy.bcpcouncil.gov.uk/mgCalendarMonthView.aspx
 331,Bracknell Forest,https://democratic.bracknell-forest.gov.uk/mgCalendarMonthView.aspx
 332,Brighton and Hove,https://democracy.brighton-hove.gov.uk/mgCalendarMonthView.aspx
-366,Bristol, City of,https://democracy.bristol.gov.uk/mgCalendarMonthView.aspx
+366,"Bristol, City of",https://democracy.bristol.gov.uk/mgCalendarMonthView.aspx
 413,Buckinghamshire,https://buckinghamshire.moderngov.co.uk/mgCalendarMonthView.aspx
 334,Cheshire East,https://moderngov.cheshireeast.gov.uk/ecminutes/mgCalendarMonthView.aspx
 335,Cheshire West and Chester,https://cmttpublic.cheshirewestandchester.gov.uk/mgCalendarMonthView.aspx
@@ -223,7 +223,7 @@ id,name,url
 418,Cumberland,https://cumberland.moderngov.co.uk/mgCalendarMonthView.aspx
 337,Darlington,https://democracy.darlington.gov.uk/mgCalendarMonthView.aspx
 408,Dorset,https://moderngov.dorsetcouncil.gov.uk/mgCalendarMonthView.aspx
-340,Herefordshire, County of,https://councillors.herefordshire.gov.uk/mgCalendarMonthView.aspx
+340,"Herefordshire, County of",https://councillors.herefordshire.gov.uk/mgCalendarMonthView.aspx
 342,Isle of Wight,https://iow.moderngov.co.uk/mgCalendarMonthView.aspx
 343,Leicester,https://cabinet.leicester.gov.uk/mgCalendarMonthView.aspx
 345,Medway,https://democracy.medway.gov.uk/mgCalendarMonthView.aspx
